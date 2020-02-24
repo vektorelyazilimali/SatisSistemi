@@ -1,0 +1,685 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbmusteriModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblkasa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="varchar" MaxLength="250" />
+          <Property Name="tutar" Type="float" />
+          <Property Name="sil_id" Type="int" />
+          <Property Name="ekleme_tarihi" Type="datetime" />
+          <Property Name="guncelleme_tarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblmusteri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="varchar" MaxLength="100" />
+          <Property Name="soyad" Type="varchar" MaxLength="100" />
+          <Property Name="adres" Type="varchar(max)" />
+          <Property Name="telefon" Type="varchar" MaxLength="20" />
+          <Property Name="tckimlik" Type="varchar" MaxLength="11" />
+          <Property Name="dogumtarihi" Type="date" />
+          <Property Name="sil_id" Type="int" />
+          <Property Name="ekleme_tarihi" Type="datetime" />
+          <Property Name="guncelleme_tarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblmusteriborc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="musteri_id" Type="int" />
+          <Property Name="borc" Type="float" />
+          <Property Name="sil_id" Type="int" />
+          <Property Name="ekleme_tarihi" Type="datetime" />
+          <Property Name="guncelleme_tarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblodeme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="musteri_id" Type="int" />
+          <Property Name="odenen" Type="float" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="acıklama" Type="varchar" MaxLength="500" />
+          <Property Name="sil_id" Type="int" />
+          <Property Name="ekleme_tarihi" Type="datetime" />
+          <Property Name="guncelleme_tarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblolcutler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="varchar" MaxLength="60" />
+          <Property Name="sil_id" Type="int" />
+          <Property Name="ekleme_tarihi" Type="datetime" />
+          <Property Name="guncelleme_tarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblpersonel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="varchar" MaxLength="100" />
+          <Property Name="soyad" Type="varchar" MaxLength="100" />
+          <Property Name="adres" Type="varchar" MaxLength="1000" />
+          <Property Name="telefon" Type="varchar" MaxLength="20" />
+          <Property Name="yakin_telefon" Type="varchar" MaxLength="20" />
+          <Property Name="dogumtarih" Type="date" />
+          <Property Name="posizyon" Type="int" />
+          <Property Name="ise_giris" Type="date" />
+          <Property Name="yetki_id" Type="int" />
+          <Property Name="sil_id" Type="int" />
+          <Property Name="ekleme_tarihi" Type="datetime" />
+          <Property Name="guncelleme_tarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblsatis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personel_id" Type="int" />
+          <Property Name="musteri_id" Type="int" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="odeme_sekli" Type="int" />
+          <Property Name="toplam_tutar" Type="float" />
+          <Property Name="odenen" Type="float" />
+          <Property Name="kalan" Type="float" />
+          <Property Name="sil_id" Type="int" />
+          <Property Name="ekleme_tarihi" Type="datetime" />
+          <Property Name="guncelleme_tarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblsatisdetay">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="satis_id" Type="int" />
+          <Property Name="urun_id" Type="int" />
+          <Property Name="birimfiyat" Type="float" />
+          <Property Name="miktar" Type="float" />
+          <Property Name="toplamfiyat" Type="float" />
+          <Property Name="sil_id" Type="int" />
+          <Property Name="ekleme_tarihi" Type="datetime" />
+          <Property Name="guncelleme_tarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblurun">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="varchar" MaxLength="500" />
+          <Property Name="marka" Type="varchar" MaxLength="500" />
+          <Property Name="barkod" Type="varchar(max)" />
+          <Property Name="olcubirimi" Type="int" />
+          <Property Name="birimfiyat" Type="float" />
+          <Property Name="kdvorani" Type="int" />
+          <Property Name="stokmiktari" Type="int" />
+          <Property Name="uyarimiktari" Type="int" />
+          <Property Name="sil_id" Type="int" />
+          <Property Name="ekleme_tarihi" Type="datetime" />
+          <Property Name="guncelleme_tarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblusers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personel_id" Type="int" />
+          <Property Name="kullanici_adi" Type="varchar" MaxLength="30" />
+          <Property Name="sifre" Type="varchar" MaxLength="16" />
+          <Property Name="sil_id" Type="int" />
+        </EntityType>
+        <Association Name="FK__tblmuster__muste__30F848ED">
+          <End Role="tblmusteri" Type="Self.tblmusteri" Multiplicity="0..1" />
+          <End Role="tblmusteriborc" Type="Self.tblmusteriborc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblmusteri">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblmusteriborc">
+              <PropertyRef Name="musteri_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblodeme__muster__2A4B4B5E">
+          <End Role="tblmusteri" Type="Self.tblmusteri" Multiplicity="0..1" />
+          <End Role="tblodeme" Type="Self.tblodeme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblmusteri">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblodeme">
+              <PropertyRef Name="musteri_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblsatis__muster__1A14E395">
+          <End Role="tblmusteri" Type="Self.tblmusteri" Multiplicity="0..1" />
+          <End Role="tblsatis" Type="Self.tblsatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblmusteri">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblsatis">
+              <PropertyRef Name="musteri_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblsatis__person__1920BF5C">
+          <End Role="tblpersonel" Type="Self.tblpersonel" Multiplicity="0..1" />
+          <End Role="tblsatis" Type="Self.tblsatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblpersonel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblsatis">
+              <PropertyRef Name="personel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblsatisd__satis__25869641">
+          <End Role="tblsatis" Type="Self.tblsatis" Multiplicity="0..1" />
+          <End Role="tblsatisdetay" Type="Self.tblsatisdetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblsatis">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblsatisdetay">
+              <PropertyRef Name="satis_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblsatisd__urun___267ABA7A">
+          <End Role="tblurun" Type="Self.tblurun" Multiplicity="0..1" />
+          <End Role="tblsatisdetay" Type="Self.tblsatisdetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblurun">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblsatisdetay">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbmusteriModelStoreContainer">
+          <EntitySet Name="tblkasa" EntityType="Self.tblkasa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblmusteri" EntityType="Self.tblmusteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblmusteriborc" EntityType="Self.tblmusteriborc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblodeme" EntityType="Self.tblodeme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblolcutler" EntityType="Self.tblolcutler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblpersonel" EntityType="Self.tblpersonel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblsatis" EntityType="Self.tblsatis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblsatisdetay" EntityType="Self.tblsatisdetay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblurun" EntityType="Self.tblurun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblusers" EntityType="Self.tblusers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblmuster__muste__30F848ED" Association="Self.FK__tblmuster__muste__30F848ED">
+            <End Role="tblmusteri" EntitySet="tblmusteri" />
+            <End Role="tblmusteriborc" EntitySet="tblmusteriborc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblodeme__muster__2A4B4B5E" Association="Self.FK__tblodeme__muster__2A4B4B5E">
+            <End Role="tblmusteri" EntitySet="tblmusteri" />
+            <End Role="tblodeme" EntitySet="tblodeme" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblsatis__muster__1A14E395" Association="Self.FK__tblsatis__muster__1A14E395">
+            <End Role="tblmusteri" EntitySet="tblmusteri" />
+            <End Role="tblsatis" EntitySet="tblsatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblsatis__person__1920BF5C" Association="Self.FK__tblsatis__person__1920BF5C">
+            <End Role="tblpersonel" EntitySet="tblpersonel" />
+            <End Role="tblsatis" EntitySet="tblsatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblsatisd__satis__25869641" Association="Self.FK__tblsatisd__satis__25869641">
+            <End Role="tblsatis" EntitySet="tblsatis" />
+            <End Role="tblsatisdetay" EntitySet="tblsatisdetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblsatisd__urun___267ABA7A" Association="Self.FK__tblsatisd__urun___267ABA7A">
+            <End Role="tblurun" EntitySet="tblurun" />
+            <End Role="tblsatisdetay" EntitySet="tblsatisdetay" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbmusteriModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblkasa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="tutar" Type="Double" />
+          <Property Name="sil_id" Type="Int32" />
+          <Property Name="ekleme_tarihi" Type="DateTime" Precision="3" />
+          <Property Name="guncelleme_tarihi" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblmusteri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="soyad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tckimlik" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="dogumtarihi" Type="DateTime" Precision="0" />
+          <Property Name="sil_id" Type="Int32" />
+          <Property Name="ekleme_tarihi" Type="DateTime" Precision="3" />
+          <Property Name="guncelleme_tarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblmusteriborc" Relationship="Self.FK__tblmuster__muste__30F848ED" FromRole="tblmusteri" ToRole="tblmusteriborc" />
+          <NavigationProperty Name="tblodeme" Relationship="Self.FK__tblodeme__muster__2A4B4B5E" FromRole="tblmusteri" ToRole="tblodeme" />
+          <NavigationProperty Name="tblsatis" Relationship="Self.FK__tblsatis__muster__1A14E395" FromRole="tblmusteri" ToRole="tblsatis" />
+        </EntityType>
+        <EntityType Name="tblmusteriborc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="musteri_id" Type="Int32" />
+          <Property Name="borc" Type="Double" />
+          <Property Name="sil_id" Type="Int32" />
+          <Property Name="ekleme_tarihi" Type="DateTime" Precision="3" />
+          <Property Name="guncelleme_tarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblmusteri" Relationship="Self.FK__tblmuster__muste__30F848ED" FromRole="tblmusteriborc" ToRole="tblmusteri" />
+        </EntityType>
+        <EntityType Name="tblodeme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="musteri_id" Type="Int32" />
+          <Property Name="odenen" Type="Double" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="acıklama" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="sil_id" Type="Int32" />
+          <Property Name="ekleme_tarihi" Type="DateTime" Precision="3" />
+          <Property Name="guncelleme_tarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblmusteri" Relationship="Self.FK__tblodeme__muster__2A4B4B5E" FromRole="tblodeme" ToRole="tblmusteri" />
+        </EntityType>
+        <EntityType Name="tblolcutler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="sil_id" Type="Int32" />
+          <Property Name="ekleme_tarihi" Type="DateTime" Precision="3" />
+          <Property Name="guncelleme_tarihi" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblpersonel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="soyad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="adres" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="yakin_telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="dogumtarih" Type="DateTime" Precision="0" />
+          <Property Name="posizyon" Type="Int32" />
+          <Property Name="ise_giris" Type="DateTime" Precision="0" />
+          <Property Name="yetki_id" Type="Int32" />
+          <Property Name="sil_id" Type="Int32" />
+          <Property Name="ekleme_tarihi" Type="DateTime" Precision="3" />
+          <Property Name="guncelleme_tarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblsatis" Relationship="Self.FK__tblsatis__person__1920BF5C" FromRole="tblpersonel" ToRole="tblsatis" />
+        </EntityType>
+        <EntityType Name="tblsatis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personel_id" Type="Int32" />
+          <Property Name="musteri_id" Type="Int32" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="odeme_sekli" Type="Int32" />
+          <Property Name="toplam_tutar" Type="Double" />
+          <Property Name="odenen" Type="Double" />
+          <Property Name="kalan" Type="Double" />
+          <Property Name="sil_id" Type="Int32" />
+          <Property Name="ekleme_tarihi" Type="DateTime" Precision="3" />
+          <Property Name="guncelleme_tarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblmusteri" Relationship="Self.FK__tblsatis__muster__1A14E395" FromRole="tblsatis" ToRole="tblmusteri" />
+          <NavigationProperty Name="tblpersonel" Relationship="Self.FK__tblsatis__person__1920BF5C" FromRole="tblsatis" ToRole="tblpersonel" />
+          <NavigationProperty Name="tblsatisdetay" Relationship="Self.FK__tblsatisd__satis__25869641" FromRole="tblsatis" ToRole="tblsatisdetay" />
+        </EntityType>
+        <EntityType Name="tblsatisdetay">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="satis_id" Type="Int32" />
+          <Property Name="urun_id" Type="Int32" />
+          <Property Name="birimfiyat" Type="Double" />
+          <Property Name="miktar" Type="Double" />
+          <Property Name="toplamfiyat" Type="Double" />
+          <Property Name="sil_id" Type="Int32" />
+          <Property Name="ekleme_tarihi" Type="DateTime" Precision="3" />
+          <Property Name="guncelleme_tarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblsatis" Relationship="Self.FK__tblsatisd__satis__25869641" FromRole="tblsatisdetay" ToRole="tblsatis" />
+          <NavigationProperty Name="tblurun" Relationship="Self.FK__tblsatisd__urun___267ABA7A" FromRole="tblsatisdetay" ToRole="tblurun" />
+        </EntityType>
+        <EntityType Name="tblurun">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="marka" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="barkod" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="olcubirimi" Type="Int32" />
+          <Property Name="birimfiyat" Type="Double" />
+          <Property Name="kdvorani" Type="Int32" />
+          <Property Name="stokmiktari" Type="Int32" />
+          <Property Name="uyarimiktari" Type="Int32" />
+          <Property Name="sil_id" Type="Int32" />
+          <Property Name="ekleme_tarihi" Type="DateTime" Precision="3" />
+          <Property Name="guncelleme_tarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblsatisdetay" Relationship="Self.FK__tblsatisd__urun___267ABA7A" FromRole="tblurun" ToRole="tblsatisdetay" />
+        </EntityType>
+        <EntityType Name="tblusers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personel_id" Type="Int32" />
+          <Property Name="kullanici_adi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="sifre" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="sil_id" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__tblmuster__muste__30F848ED">
+          <End Role="tblmusteri" Type="Self.tblmusteri" Multiplicity="0..1" />
+          <End Role="tblmusteriborc" Type="Self.tblmusteriborc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblmusteri">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblmusteriborc">
+              <PropertyRef Name="musteri_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblodeme__muster__2A4B4B5E">
+          <End Role="tblmusteri" Type="Self.tblmusteri" Multiplicity="0..1" />
+          <End Role="tblodeme" Type="Self.tblodeme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblmusteri">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblodeme">
+              <PropertyRef Name="musteri_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblsatis__muster__1A14E395">
+          <End Role="tblmusteri" Type="Self.tblmusteri" Multiplicity="0..1" />
+          <End Role="tblsatis" Type="Self.tblsatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblmusteri">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblsatis">
+              <PropertyRef Name="musteri_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblsatis__person__1920BF5C">
+          <End Role="tblpersonel" Type="Self.tblpersonel" Multiplicity="0..1" />
+          <End Role="tblsatis" Type="Self.tblsatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblpersonel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblsatis">
+              <PropertyRef Name="personel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblsatisd__satis__25869641">
+          <End Role="tblsatis" Type="Self.tblsatis" Multiplicity="0..1" />
+          <End Role="tblsatisdetay" Type="Self.tblsatisdetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblsatis">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblsatisdetay">
+              <PropertyRef Name="satis_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblsatisd__urun___267ABA7A">
+          <End Role="tblurun" Type="Self.tblurun" Multiplicity="0..1" />
+          <End Role="tblsatisdetay" Type="Self.tblsatisdetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblurun">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblsatisdetay">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbmusteriEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblkasa" EntityType="Self.tblkasa" />
+          <EntitySet Name="tblmusteri" EntityType="Self.tblmusteri" />
+          <EntitySet Name="tblmusteriborc" EntityType="Self.tblmusteriborc" />
+          <EntitySet Name="tblodeme" EntityType="Self.tblodeme" />
+          <EntitySet Name="tblolcutler" EntityType="Self.tblolcutler" />
+          <EntitySet Name="tblpersonel" EntityType="Self.tblpersonel" />
+          <EntitySet Name="tblsatis" EntityType="Self.tblsatis" />
+          <EntitySet Name="tblsatisdetay" EntityType="Self.tblsatisdetay" />
+          <EntitySet Name="tblurun" EntityType="Self.tblurun" />
+          <EntitySet Name="tblusers" EntityType="Self.tblusers" />
+          <AssociationSet Name="FK__tblmuster__muste__30F848ED" Association="Self.FK__tblmuster__muste__30F848ED">
+            <End Role="tblmusteri" EntitySet="tblmusteri" />
+            <End Role="tblmusteriborc" EntitySet="tblmusteriborc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblodeme__muster__2A4B4B5E" Association="Self.FK__tblodeme__muster__2A4B4B5E">
+            <End Role="tblmusteri" EntitySet="tblmusteri" />
+            <End Role="tblodeme" EntitySet="tblodeme" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblsatis__muster__1A14E395" Association="Self.FK__tblsatis__muster__1A14E395">
+            <End Role="tblmusteri" EntitySet="tblmusteri" />
+            <End Role="tblsatis" EntitySet="tblsatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblsatis__person__1920BF5C" Association="Self.FK__tblsatis__person__1920BF5C">
+            <End Role="tblpersonel" EntitySet="tblpersonel" />
+            <End Role="tblsatis" EntitySet="tblsatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblsatisd__satis__25869641" Association="Self.FK__tblsatisd__satis__25869641">
+            <End Role="tblsatis" EntitySet="tblsatis" />
+            <End Role="tblsatisdetay" EntitySet="tblsatisdetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblsatisd__urun___267ABA7A" Association="Self.FK__tblsatisd__urun___267ABA7A">
+            <End Role="tblurun" EntitySet="tblurun" />
+            <End Role="tblsatisdetay" EntitySet="tblsatisdetay" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbmusteriModelStoreContainer" CdmEntityContainer="dbmusteriEntities">
+          <EntitySetMapping Name="tblkasa">
+            <EntityTypeMapping TypeName="dbmusteriModel.tblkasa">
+              <MappingFragment StoreEntitySet="tblkasa">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="tutar" ColumnName="tutar" />
+                <ScalarProperty Name="sil_id" ColumnName="sil_id" />
+                <ScalarProperty Name="ekleme_tarihi" ColumnName="ekleme_tarihi" />
+                <ScalarProperty Name="guncelleme_tarihi" ColumnName="guncelleme_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblmusteri">
+            <EntityTypeMapping TypeName="dbmusteriModel.tblmusteri">
+              <MappingFragment StoreEntitySet="tblmusteri">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="tckimlik" ColumnName="tckimlik" />
+                <ScalarProperty Name="dogumtarihi" ColumnName="dogumtarihi" />
+                <ScalarProperty Name="sil_id" ColumnName="sil_id" />
+                <ScalarProperty Name="ekleme_tarihi" ColumnName="ekleme_tarihi" />
+                <ScalarProperty Name="guncelleme_tarihi" ColumnName="guncelleme_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblmusteriborc">
+            <EntityTypeMapping TypeName="dbmusteriModel.tblmusteriborc">
+              <MappingFragment StoreEntitySet="tblmusteriborc">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="musteri_id" ColumnName="musteri_id" />
+                <ScalarProperty Name="borc" ColumnName="borc" />
+                <ScalarProperty Name="sil_id" ColumnName="sil_id" />
+                <ScalarProperty Name="ekleme_tarihi" ColumnName="ekleme_tarihi" />
+                <ScalarProperty Name="guncelleme_tarihi" ColumnName="guncelleme_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblodeme">
+            <EntityTypeMapping TypeName="dbmusteriModel.tblodeme">
+              <MappingFragment StoreEntitySet="tblodeme">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="musteri_id" ColumnName="musteri_id" />
+                <ScalarProperty Name="odenen" ColumnName="odenen" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="acıklama" ColumnName="acıklama" />
+                <ScalarProperty Name="sil_id" ColumnName="sil_id" />
+                <ScalarProperty Name="ekleme_tarihi" ColumnName="ekleme_tarihi" />
+                <ScalarProperty Name="guncelleme_tarihi" ColumnName="guncelleme_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblolcutler">
+            <EntityTypeMapping TypeName="dbmusteriModel.tblolcutler">
+              <MappingFragment StoreEntitySet="tblolcutler">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="sil_id" ColumnName="sil_id" />
+                <ScalarProperty Name="ekleme_tarihi" ColumnName="ekleme_tarihi" />
+                <ScalarProperty Name="guncelleme_tarihi" ColumnName="guncelleme_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblpersonel">
+            <EntityTypeMapping TypeName="dbmusteriModel.tblpersonel">
+              <MappingFragment StoreEntitySet="tblpersonel">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="yakin_telefon" ColumnName="yakin_telefon" />
+                <ScalarProperty Name="dogumtarih" ColumnName="dogumtarih" />
+                <ScalarProperty Name="posizyon" ColumnName="posizyon" />
+                <ScalarProperty Name="ise_giris" ColumnName="ise_giris" />
+                <ScalarProperty Name="yetki_id" ColumnName="yetki_id" />
+                <ScalarProperty Name="sil_id" ColumnName="sil_id" />
+                <ScalarProperty Name="ekleme_tarihi" ColumnName="ekleme_tarihi" />
+                <ScalarProperty Name="guncelleme_tarihi" ColumnName="guncelleme_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblsatis">
+            <EntityTypeMapping TypeName="dbmusteriModel.tblsatis">
+              <MappingFragment StoreEntitySet="tblsatis">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+                <ScalarProperty Name="musteri_id" ColumnName="musteri_id" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="odeme_sekli" ColumnName="odeme_sekli" />
+                <ScalarProperty Name="toplam_tutar" ColumnName="toplam_tutar" />
+                <ScalarProperty Name="odenen" ColumnName="odenen" />
+                <ScalarProperty Name="kalan" ColumnName="kalan" />
+                <ScalarProperty Name="sil_id" ColumnName="sil_id" />
+                <ScalarProperty Name="ekleme_tarihi" ColumnName="ekleme_tarihi" />
+                <ScalarProperty Name="guncelleme_tarihi" ColumnName="guncelleme_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblsatisdetay">
+            <EntityTypeMapping TypeName="dbmusteriModel.tblsatisdetay">
+              <MappingFragment StoreEntitySet="tblsatisdetay">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="satis_id" ColumnName="satis_id" />
+                <ScalarProperty Name="urun_id" ColumnName="urun_id" />
+                <ScalarProperty Name="birimfiyat" ColumnName="birimfiyat" />
+                <ScalarProperty Name="miktar" ColumnName="miktar" />
+                <ScalarProperty Name="toplamfiyat" ColumnName="toplamfiyat" />
+                <ScalarProperty Name="sil_id" ColumnName="sil_id" />
+                <ScalarProperty Name="ekleme_tarihi" ColumnName="ekleme_tarihi" />
+                <ScalarProperty Name="guncelleme_tarihi" ColumnName="guncelleme_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblurun">
+            <EntityTypeMapping TypeName="dbmusteriModel.tblurun">
+              <MappingFragment StoreEntitySet="tblurun">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="marka" ColumnName="marka" />
+                <ScalarProperty Name="barkod" ColumnName="barkod" />
+                <ScalarProperty Name="olcubirimi" ColumnName="olcubirimi" />
+                <ScalarProperty Name="birimfiyat" ColumnName="birimfiyat" />
+                <ScalarProperty Name="kdvorani" ColumnName="kdvorani" />
+                <ScalarProperty Name="stokmiktari" ColumnName="stokmiktari" />
+                <ScalarProperty Name="uyarimiktari" ColumnName="uyarimiktari" />
+                <ScalarProperty Name="sil_id" ColumnName="sil_id" />
+                <ScalarProperty Name="ekleme_tarihi" ColumnName="ekleme_tarihi" />
+                <ScalarProperty Name="guncelleme_tarihi" ColumnName="guncelleme_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblusers">
+            <EntityTypeMapping TypeName="dbmusteriModel.tblusers">
+              <MappingFragment StoreEntitySet="tblusers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+                <ScalarProperty Name="kullanici_adi" ColumnName="kullanici_adi" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="sil_id" ColumnName="sil_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

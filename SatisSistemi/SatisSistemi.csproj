@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{963D770A-A15B-4CA8-9921-1452C2029B51}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SatisSistemi</RootNamespace>
+    <AssemblyName>SatisSistemi</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bll\tblkasamanager.cs" />
+    <Compile Include="Bll\tblmusteriborcumanager.cs" />
+    <Compile Include="Bll\tblmusterimanager.cs" />
+    <Compile Include="Bll\tblodememanager.cs" />
+    <Compile Include="Dal\tblusersdao.cs" />
+    <Compile Include="dbmusteriDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbmusteriDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DbSatisSistemi.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbSatisSistemi.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DbSatisSistemi.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbSatisSistemi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DbSatisSistemi.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbSatisSistemi.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblkasa.cs">
+      <DependentUpon>DbSatisSistemi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblmusteri.cs">
+      <DependentUpon>DbSatisSistemi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblmusteriborc.cs">
+      <DependentUpon>DbSatisSistemi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblodeme.cs">
+      <DependentUpon>DbSatisSistemi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblolcutler.cs">
+      <DependentUpon>DbSatisSistemi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblpersonel.cs">
+      <DependentUpon>DbSatisSistemi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblsatis.cs">
+      <DependentUpon>DbSatisSistemi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblsatisdetay.cs">
+      <DependentUpon>DbSatisSistemi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblurun.cs">
+      <DependentUpon>DbSatisSistemi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblusers.cs">
+      <DependentUpon>DbSatisSistemi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMainPage.Designer.cs">
+      <DependentUpon>frmMainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MusteriIslemleri\frmMusteriKayit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MusteriIslemleri\frmMusteriKayit.Designer.cs">
+      <DependentUpon>frmMusteriKayit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MusteriIslemleri\UsercontrolEkliForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MusteriIslemleri\UsercontrolEkliForm.Designer.cs">
+      <DependentUpon>UsercontrolEkliForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SatısIslemleri\frmSatis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SatısIslemleri\frmSatis.Designer.cs">
+      <DependentUpon>frmSatis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\model_tblusers.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\MusteriBilgisi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MusteriBilgisi.Designer.cs">
+      <DependentUpon>MusteriBilgisi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MusteriListGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MusteriListGrid.Designer.cs">
+      <DependentUpon>MusteriListGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\CRUDEnitityBase.cs" />
+    <Compile Include="Utility\ICRUD.cs" />
+    <Compile Include="Utility\ICrudEntity.cs" />
+    <Compile Include="Utility\StaticValues.cs" />
+    <EmbeddedResource Include="Forms\frmMainPage.resx">
+      <DependentUpon>frmMainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MusteriIslemleri\frmMusteriKayit.resx">
+      <DependentUpon>frmMusteriKayit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MusteriIslemleri\UsercontrolEkliForm.resx">
+      <DependentUpon>UsercontrolEkliForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SatısIslemleri\frmSatis.resx">
+      <DependentUpon>frmSatis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserControls\MusteriBilgisi.resx">
+      <DependentUpon>MusteriBilgisi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MusteriListGrid.resx">
+      <DependentUpon>MusteriListGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Entity\DbSatisSistemi.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbSatisSistemi.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="dbmusteriDataSet.xsc">
+      <DependentUpon>dbmusteriDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dbmusteriDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbmusteriDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dbmusteriDataSet.xss">
+      <DependentUpon>dbmusteriDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Entity\DbSatisSistemi.edmx.diagram">
+      <DependentUpon>DbSatisSistemi.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\AdminIslemleri\" />
+    <Folder Include="Forms\FaturaIslemleri\" />
+    <Folder Include="Forms\Raporlar\" />
+    <Folder Include="Forms\UrunStokIslemleri\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entity\DbSatisSistemi.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbSatisSistemi.edmx</DependentUpon>
+      <LastGenOutput>DbSatisSistemi.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\DbSatisSistemi.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbSatisSistemi.edmx</DependentUpon>
+      <LastGenOutput>DbSatisSistemi.cs</LastGenOutput>
+    </Content>
+    <Content Include="Media\login-background-2.jpg" />
+    <Content Include="Media\login-background.jpg" />
+    <Content Include="Media\logo\flag_person_male_32px.png" />
+    <Content Include="Media\logo\graph_report_32px.png" />
+    <Content Include="Media\logo\online_shop_sale_32px.png" />
+    <Content Include="Media\logo\purchase_order_32px.png" />
+    <Content Include="Media\logo\scan_stock_32px.png" />
+    <Content Include="Media\logo\security_lock_32px.png" />
+    <Content Include="Media\satis.jpg" />
+    <None Include="Resources\loading-gif-transparent-4.gif" />
+    <None Include="Resources\yukleniyor.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
